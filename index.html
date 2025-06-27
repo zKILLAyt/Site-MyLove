@@ -48,6 +48,22 @@
       font-size: 0.9em;
       color: #888;
     }
+    .music-button {
+      margin-top: 20px;
+      font-size: 1.1em;
+      background-color: #ffcce6;
+      border: none;
+      border-radius: 20px;
+      padding: 12px 25px;
+      color: #a80050;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(255, 153, 204, 0.4);
+      transition: transform 0.2s ease-in-out;
+    }
+    .music-button:hover {
+      background-color: #ffb3d9;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -61,16 +77,15 @@
     <img src="foto2.jpg" alt="Foto 2">
     <img src="foto3.jpg" alt="Foto 3">
     <img src="foto4.jpg" alt="Foto 4">
-    <!-- Adicione mais conforme quiser -->
   </div>
 
-  <div class="footer">Feito com todo o meu amor 💗</div>
-
-  <!-- Música de fundo -->
-  <audio autoplay loop hidden>
+  <button class="music-button" onclick="document.getElementById('bg-music').play()">💖 Tocar Música 💖</button>
+  <audio id="bg-music" loop>
     <source src="september.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio automático.
+    Seu navegador não suporta áudio.
   </audio>
+
+  <div class="footer">Feito com todo o meu amor 💗</div>
 
   <script>
     const mensagens = [
