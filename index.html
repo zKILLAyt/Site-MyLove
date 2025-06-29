@@ -79,16 +79,11 @@
   </div>
 
   <button class="music-button" onclick="document.getElementById('bg-music').play()">💖 Tocar Música 💖</button>
-<button class="music-button" onclick="tocarMusica()">💖 Tocar Música 💖</button>
-<script>
-  function tocarMusica() {
-    const audio = document.getElementById('bg-music');
-    audio.play().catch(() => {
-      alert("⚠️ O navegador bloqueou a reprodução automática. Clique novamente ou interaja com a página.");
-    });
-  }
-</script>
-  
+  <audio id="bg-music" loop>
+    <source src="september.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
   <div class="footer">Feito com todo o meu amor 💜</div>
 
   <script>
@@ -133,15 +128,15 @@
     const messageBox = document.getElementById("message");
 
     if (diffDays >= 0 && diffDays < mensagens.length) {
-      counter.textContent = `Dia ${diffDays + 1} de 30`;
+      counter.textContent = Dia ${diffDays + 1} de 30;
       messageBox.textContent = mensagens[diffDays];
     } else if (diffDays < 0) {
-      counter.textContent = `Faltam ${Math.abs(diffDays)} dias para começar a contagem!`;
+      counter.textContent = Faltam ${Math.abs(diffDays)} dias para começar a contagem!;
       messageBox.textContent = "💌 Ainda não é hora... Mas o amor já está no ar.";
     } else {
-      counter.textContent = `As 30 mensagens foram entregues 💖`;
+      counter.textContent = As 30 mensagens foram entregues 💖;
       messageBox.textContent = "🎉 Todas as mensagens foram reveladas. Mas o amor continua crescendo!";
     }
   </script>
 </body>
-</html>
+</html
