@@ -79,11 +79,16 @@
   </div>
 
   <button class="music-button" onclick="document.getElementById('bg-music').play()">💖 Tocar Música 💖</button>
-  <audio id="bg-music" loop>
-    <source src="september.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
-
+<button class="music-button" onclick="tocarMusica()">💖 Tocar Música 💖</button>
+<script>
+  function tocarMusica() {
+    const audio = document.getElementById('bg-music');
+    audio.play().catch(() => {
+      alert("⚠️ O navegador bloqueou a reprodução automática. Clique novamente ou interaja com a página.");
+    });
+  }
+</script>
+  
   <div class="footer">Feito com todo o meu amor 💜</div>
 
   <script>
