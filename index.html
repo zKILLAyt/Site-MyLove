@@ -7,8 +7,8 @@
   <style>
     body {
       font-family: 'Comic Sans MS', cursive;
-      background: linear-gradient(to bottom right, #e6e6fa, #d8bfd8); /* Lavanda e Thistle */
-      color: #6a0dad; /* Violeta escuro */
+      background: linear-gradient(to bottom right, #e6e6fa, #d8bfd8);
+      color: #6a0dad;
       text-align: center;
       padding: 30px;
     }
@@ -21,14 +21,14 @@
       margin-bottom: 20px;
     }
     .message {
-      background: #f3e8ff; /* lavanda bem clara */
-      border: 2px dashed #cba0e3; /* violeta claro */
+      background: #f3e8ff;
+      border: 2px dashed #cba0e3;
       border-radius: 20px;
       padding: 20px;
       margin: 20px auto;
       max-width: 600px;
       font-size: 1.2em;
-      box-shadow: 0 0 10px rgba(155, 89, 182, 0.3); /* sombra roxa */
+      box-shadow: 0 0 10px rgba(155, 89, 182, 0.3);
     }
     .gallery {
       display: flex;
@@ -41,7 +41,7 @@
       width: 200px;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(186, 85, 211, 0.4); /* roxo médio */
+      box-shadow: 0 0 10px rgba(186, 85, 211, 0.4);
     }
     .footer {
       margin-top: 40px;
@@ -64,11 +64,34 @@
       background-color: #c29de7;
       transform: scale(1.05);
     }
+    .button-container {
+      margin: 30px auto;
+      max-width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .day-button {
+      background-color: #e6ccff;
+      border: 1px solid #b999ff;
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .day-button:hover {
+      background-color: #d1b3ff;
+    }
   </style>
 </head>
 <body>
   <h1>💜 Para Meu Mundo 💜</h1>
   <div class="day-counter" id="counter"></div>
+
+  <div class="button-container" id="button-container"></div>
+
   <div class="message" id="message">Carregando mensagem...</div>
 
   <div class="gallery">
@@ -88,16 +111,16 @@
 
   <script>
     const mensagens = [
-      "Meu Amor! feliz aniversário! Hoje o dia é todinho seu e meu coração transborda de alegria por poder celebrar um ano da sua vida ao seu lado. Você é a pessoa mais incrível que já conheci: seu sorriso ilumina meus dias, seu carinho me envolve e sua força me inspira. Sou tão grato por cada momento, cada risada e cada abraço que compartilhamos. Que este novo ciclo seja ainda mais maravilhoso, repleto de sonhos realizados, muita felicidade e todo o amor que você merece. Eu te amo mais do que as palavras podem expressar!",
-      "Pensando em você e em como sua presença torna tudo melhor. Tenha um dia incrível!",
-      "Só queria te lembrar o quanto você é especial para mim. Seu sorriso é a minha dose diária de felicidade.",
-      "Seu abraço é o meu lugar favorito no mundo. Mal posso esperar para te ver!",
-      "Você é a pessoa mais linda por dentro e por fora que eu conheço. Nunca se esqueça disso.",
-      "Cada dia ao seu lado é um presente. Obrigado por ser você.",
+      "Meu Amor! feliz aniversário! ...", // Dia 1
+      "Pensando em você e em como sua presença torna tudo melhor. ...",
+      "Só queria te lembrar o quanto você é especial para mim. ...",
+      "Seu abraço é o meu lugar favorito no mundo. ...",
+      "Você é a pessoa mais linda por dentro e por fora que eu conheço. ...",
+      "Cada dia ao seu lado é um presente. ...",
       "Sua risada é a melhor melodia que meus ouvidos podem ouvir.",
       "Sinto sua falta a cada segundo que não estamos juntos.",
       "Você tem um jeito único de iluminar qualquer ambiente.",
-      "Lembre-se que você é capaz de tudo que se propõe a fazer. Acredite em você!",
+      "Lembre-se que você é capaz de tudo que se propõe a fazer.",
       "Minha inspiração tem nome e sobrenome: o seu.",
       "Adoro cada detalhe seu, cada mania, cada jeitinho.",
       "Seu carinho me acalma e me faz sentir seguro.",
@@ -116,7 +139,7 @@
       "Que a alegria te encontre em cada cantinho do seu dia.",
       "Lembre-se que você é amada, admirada e muito valorizada.",
       "Contar com você é ter a certeza de que nunca estou sozinho.",
-      "Esse é o ultimo dia né... O tempo passou rapido e ja foram 30 dias, e não tem como dizer o quanto eu ainda sou grato por você, 30 dias, 30 mensagens e ainda não acho que não foi suficente para você, sinto que eu ainda deveria falar muito mais, por que meu amor por você e algo que nem 1 milhao de dias eu conseguiria descrever, apenas obrigado meu amor... Te amo<3",
+      "Esse é o ultimo dia né... O tempo passou rapido e ja foram 30 dias ...",
     ];
 
     const startDate = new Date("2025-06-27");
@@ -126,7 +149,9 @@
 
     const counter = document.getElementById("counter");
     const messageBox = document.getElementById("message");
+    const buttonContainer = document.getElementById("button-container");
 
+ 
     if (diffDays >= 0 && diffDays < mensagens.length) {
       counter.textContent = `Dia ${diffDays + 1} de 30`;
       messageBox.textContent = mensagens[diffDays];
@@ -137,6 +162,20 @@
       counter.textContent = `As 30 mensagens foram entregues 💖`;
       messageBox.textContent = "🎉 Todas as mensagens foram reveladas. Mas o amor continua crescendo!";
     }
+
+ 
+    mensagens.forEach((msg, index) => {
+      const dia = index + 1;
+      const btn = document.createElement("button");
+      btn.textContent = `Dia ${dia}`;
+      btn.classList.add("day-button");
+      btn.onclick = () => {
+        counter.textContent = `Dia ${dia} de 30`;
+        messageBox.textContent = mensagens[index];
+      };
+      buttonContainer.appendChild(btn);
+    });
   </script>
 </body>
 </html>
+
