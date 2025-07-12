@@ -128,13 +128,13 @@
     const messageBox = document.getElementById("message");
 
     if (diffDays >= 0 && diffDays < mensagens.length) {
-      counter.textContent = Dia ${diffDays + 1} de 30;
+      counter.textContent = `Dia ${diffDays + 1} de 30`;
       messageBox.textContent = mensagens[diffDays];
     } else if (diffDays < 0) {
-      counter.textContent = Faltam ${Math.abs(diffDays)} dias para começar a contagem!;
+      counter.textContent = `Faltam ${Math.abs(diffDays)} dias para começar a contagem!`;
       messageBox.textContent = "💌 Ainda não é hora... Mas o amor já está no ar.";
     } else {
-      counter.textContent = As 30 mensagens foram entregues 💖;
+      counter.textContent = `As 30 mensagens foram entregues 💖`;
       messageBox.textContent = "🎉 Todas as mensagens foram reveladas. Mas o amor continua crescendo!";
     }
   </script>
